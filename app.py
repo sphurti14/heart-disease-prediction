@@ -82,9 +82,18 @@ if st.button("Predict"):
         "thal": thal_map[thal]
     }])
 
-    prediction = pipeline.predict(input_df)[0]
+prediction = pipeline.predict(input_df)[0]
+probability = pipeline.predict_proba(input_df)[0][1]
 
-    if prediction == 1:
-        st.error("⚠️ Heart Disease Detected")
-    else:
-        st.success("✅ No Heart Disease Detected")
+st.subheader("Prediction Result")
+
+if prediction == 1:
+    st.error("⚠️ Heart Disease Detected")
+else:
+    st.success("✅ No Heart Disease Detected")
+
+st.write(f"Risk Probability: {probability * 100:.2f}%")
+
+# Progress bar visualization
+st.progress(float(probability))
+
