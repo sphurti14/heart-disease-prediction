@@ -1,36 +1,56 @@
 # Heart Disease Prediction using Machine Learning
 
-This project predicts the presence of heart disease using patient health data and Machine Learning techniques.
+## Project Overview
+This project predicts whether a patient is likely to have heart disease based on clinical parameters.  
+It is built using a complete Scikit-learn Pipeline and deployed as a Streamlit web application.
 
-## Problem Statement
-Heart disease is one of the leading causes of death worldwide. Early prediction can help in timely diagnosis and treatment.
+## Application Preview
+![App Preview](app_preview.png)
 
-## Dataset
-The dataset contains patient health attributes such as age, cholesterol level, resting blood pressure, heart rate, and other medical indicators.
 
-## Technologies Used
+## Live Demo
+(Add deployed link here later)
+
+## Tech Stack
 - Python
-- Pandas, NumPy
-- Matplotlib, Seaborn
+- Pandas & NumPy
 - Scikit-learn
-- Logistic Regression
-- Jupyter Notebook
-- VS Code
+- Streamlit
+- Joblib
+- Git & GitHub
 
-## Project Workflow
-1. Data loading and understanding
-2. Exploratory Data Analysis (EDA)
-3. Data cleaning and preprocessing
-4. Encoding categorical variables
-5. Feature scaling
-6. Model training using Logistic Regression
-7. Model evaluation (accuracy, classification report, confusion matrix)
-8. Saving trained model
+## Features Used
+- Age
+- Sex
+- Chest Pain Type
+- Resting Blood Pressure
+- Cholesterol
+- Fasting Blood Sugar
+- Resting ECG
+- Maximum Heart Rate Achieved
+- Exercise Induced Angina
+- ST Depression (oldpeak)
+- Slope
+- Number of Major Vessels (ca)
+- Thalassemia
+
+
+## Model Details
+- Implemented using Scikit-learn Pipeline
+- Includes preprocessing + encoding + scaling
+- Logistic Regression used for classification
+- Evaluated using accuracy, confusion matrix
+
 
 ## Results
-- Achieved approximately **79% accuracy** on test data
-- Evaluated model using precision, recall, F1-score, and confusion matrix
+- Model Accuracy: ~79%
+- Handles categorical and numerical features using pipeline architecture
 
-## Note
-AI tools were used for understanding concepts, debugging, and improving code clarity.
-The project implementation and learning are my own.
+## How to Run Locally
+
+```bash
+git clone https://github.com/sphurti14/heart-disease-prediction.git
+cd heart-disease-prediction
+pip install -r requirements.txt
+streamlit run app.py
+```
