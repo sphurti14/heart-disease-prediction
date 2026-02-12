@@ -9,7 +9,7 @@ It is built using a complete Scikit-learn Pipeline and deployed as a Streamlit w
 
 
 ## Live Demo
-(Add deployed link here later)
+https://heart-disease-prediction-6grnbtjbvsgemvebbafs2y.streamlit.app/
 
 ## Tech Stack
 - Python
