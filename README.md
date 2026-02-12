@@ -53,6 +53,20 @@ https://heart-disease-prediction-6grnbtjbvsgemvebbafs2y.streamlit.app/
   - Confusion Matrix
   - Precision & Recall
 
+  ## Project Architecture
+
+User Input (Streamlit UI)
+        ↓
+Data Preprocessing Pipeline
+        - Missing Value Imputation
+        - One-Hot Encoding
+        - Standard Scaling
+        ↓
+Logistic Regression Model
+        ↓
+Prediction + Probability Output
+
+
 
 
 ## Results
