@@ -1,6 +1,44 @@
 import pandas as pd
 import streamlit as st
 import joblib
+
+import pandas as pd
+from sklearn.model_selection import train_test_split
+from sklearn.pipeline import Pipeline
+from sklearn.compose import ColumnTransformer
+from sklearn.preprocessing import OneHotEncoder, StandardScaler
+from sklearn.linear_model import LogisticRegression
+
+# Load dataset
+df = pd.read_csv("heart.csv")
+
+# Separate features and target
+X = df.drop("target", axis=1)
+y = df["target"]
+
+# Define categorical and numerical columns
+categorical_cols = ["sex", "cp", "fbs", "restecg", "exang", "slope", "ca", "thal"]
+numerical_cols = ["age", "trestbps", "chol", "thalch", "oldpeak"]
+
+# Preprocessing
+preprocessor = ColumnTransformer(
+    transformers=[
+        ("num", StandardScaler(), numerical_cols),
+        ("cat", OneHotEncoder(handle_unknown="ignore"), categorical_cols)
+    ]
+)
+
+# Create pipeline
+pipeline = Pipeline(
+    steps=[
+        ("preprocessor", preprocessor),
+        ("classifier", LogisticRegression(max_iter=1000))
+    ]
+)
+
+# Train model
+pipeline.fit(X, y)
+
 # Mapping dictionaries (must match training data)
 sex_map = {"Male": "Male", "Female": "Female"}
 
@@ -35,7 +73,7 @@ thal_map = {
 
 
 # Load trained pipeline (preprocessing + model)
-pipeline = joblib.load("heart_disease_pipeline.pkl")
+
 
 # Page config
 st.set_page_config(page_title="Heart Disease Prediction", layout="centered")
@@ -82,18 +120,4 @@ if st.button("Predict"):
         "thal": thal_map[thal]
     }])
 
-prediction = pipeline.predict(input_df)[0]
-probability = pipeline.predict_proba(input_df)[0][1]
-
-st.subheader("Prediction Result")
-
-if prediction == 1:
-    st.error("⚠️ Heart Disease Detected")
-else:
-    st.success("✅ No Heart Disease Detected")
-
-st.write(f"Risk Probability: {probability * 100:.2f}%")
-
-# Progress bar visualization
-st.progress(float(probability))
-
+    
