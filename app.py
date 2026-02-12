@@ -111,3 +111,7 @@ if st.button("Predict"):
 
     st.write(f"Risk Probability: {probability:.2%}")
     st.progress(float(probability))
+
+    st.markdown("---")
+st.caption("Built by Sphurti | Machine Learning Project | 2026")
+
