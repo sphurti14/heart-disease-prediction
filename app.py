@@ -119,21 +119,38 @@ st.markdown("---")
 
 # Predict button
 if st.button("Predict"):
-    st.write("Button clicked")
-    input_df = pd.DataFrame([{
+    if st.button("Predict"):
+
+    input_data = {
         "age": age,
+        "sex": sex,
+        "cp": cp,
         "trestbps": trestbps,
         "chol": chol,
-        "thalch": thalach,
+        "fbs": fbs,
+        "restecg": restecg,
+        "thalch": thalch,
+        "exang": exang,
         "oldpeak": oldpeak,
-        "sex": sex_map[sex],
-        "cp": cp_map[cp],
-        "fbs": fbs_map[fbs],
-        "restecg": restecg_map[restecg],
-        "exang": exang_map[exang],
-        "slope": slope_map[slope],
+        "slope": slope,
         "ca": ca,
-        "thal": thal_map[thal]
-    }])
+        "thal": thal
+    }
+
+    input_df = pd.DataFrame([input_data])
+
+    prediction = pipeline.predict(input_df)[0]
+    probability = pipeline.predict_proba(input_df)[0][1]
+
+    st.subheader("Prediction Result")
+
+    if prediction == 1:
+        st.error("⚠️ Heart Disease Detected")
+    else:
+        st.success("✅ No Heart Disease Detected")
+
+    st.write(f"Risk Probability: {probability:.2%}")
+    st.progress(float(probability))
+
 
     
