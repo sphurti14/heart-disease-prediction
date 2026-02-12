@@ -13,8 +13,8 @@ from sklearn.linear_model import LogisticRegression
 df = pd.read_csv("heart.csv")
 
 # Separate features and target
-X = df.drop("target", axis=1)
-y = df["target"]
+X = df.drop("num", axis=1)
+y = df["num"]
 
 # Define categorical and numerical columns
 categorical_cols = ["sex", "cp", "fbs", "restecg", "exang", "slope", "ca", "thal"]
