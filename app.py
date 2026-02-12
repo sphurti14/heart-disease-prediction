@@ -3,6 +3,8 @@ import streamlit as st
 import joblib
 
 import pandas as pd
+from sklearn.impute import SimpleImputer
+
 from sklearn.model_selection import train_test_split
 from sklearn.pipeline import Pipeline
 from sklearn.compose import ColumnTransformer
@@ -21,12 +23,25 @@ categorical_cols = ["sex", "cp", "fbs", "restecg", "exang", "slope", "ca", "thal
 numerical_cols = ["age", "trestbps", "chol", "thalch", "oldpeak"]
 
 # Preprocessing
+from sklearn.pipeline import Pipeline as SkPipeline
+
+numeric_transformer = SkPipeline(steps=[
+    ("imputer", SimpleImputer(strategy="median")),
+    ("scaler", StandardScaler())
+])
+
+categorical_transformer = SkPipeline(steps=[
+    ("imputer", SimpleImputer(strategy="most_frequent")),
+    ("encoder", OneHotEncoder(handle_unknown="ignore"))
+])
+
 preprocessor = ColumnTransformer(
     transformers=[
-        ("num", StandardScaler(), numerical_cols),
-        ("cat", OneHotEncoder(handle_unknown="ignore"), categorical_cols)
+        ("num", numeric_transformer, numerical_cols),
+        ("cat", categorical_transformer, categorical_cols)
     ]
 )
+
 
 # Create pipeline
 pipeline = Pipeline(
