@@ -23,7 +23,7 @@ st.markdown(
 )
 
 
-st.title("❤️ Heart Disease Prediction App")
+st.title(" Heart Disease Prediction App")
 st.write("This app predicts whether a person has heart disease using Machine Learning.")
 
 @st.cache_resource
