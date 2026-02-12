@@ -7,6 +7,21 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.impute import SimpleImputer
 
 st.set_page_config(page_title="Heart Disease Prediction", layout="centered")
+st.markdown(
+    """
+    <style>
+    .stButton>button {
+        background-color: #ff4b4b;
+        color: white;
+        font-weight: bold;
+        border-radius: 8px;
+        padding: 10px;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
+
 
 st.title("❤️ Heart Disease Prediction App")
 st.write("This app predicts whether a person has heart disease using Machine Learning.")
