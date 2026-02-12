@@ -119,6 +119,7 @@ st.markdown("---")
 
 # Predict button
 if st.button("Predict"):
+    st.write("Button clicked")
     input_df = pd.DataFrame([{
         "age": age,
         "trestbps": trestbps,
