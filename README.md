@@ -41,6 +41,19 @@ https://heart-disease-prediction-6grnbtjbvsgemvebbafs2y.streamlit.app/
 - Logistic Regression used for classification
 - Evaluated using accuracy, confusion matrix
 
+## Model Performance
+
+- Algorithm Used: Logistic Regression
+- Accuracy: ~79%
+- Preprocessing Steps:
+  - Missing value imputation
+  - Standard scaling (numerical features)
+  - One-hot encoding (categorical features)
+- Evaluation Metrics:
+  - Confusion Matrix
+  - Precision & Recall
+
+
 
 ## Results
 - Model Accuracy: ~79%
